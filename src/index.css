@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.lod {
+  text-align: -webkit-center;
+  margin-top: 21px;
+  margin-bottom: 441px;
+  display: flex;
+  justify-content: center;
+}
+
+.feedback {
+  background: #FFECDF;
+  border: 1px solid #F2D6C2;
+  border-radius: 15px;
+  box-shadow: none;
+  padding: 0.6rem 0.75rem;
+  resize: none;
+  color: #000000;
+  -webkit-text-stroke: thin;
+}
+
+.imgs {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+.dd {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.fixdate {
+  width: 30% !important;
+}
+
+.timebox-chat {
+  text-align: center;
+  margin-bottom: 17px;
+}
+
+.timebox-span {
+  background: #f8b48440;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.text-ellipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 250px;
+}
+
+.area:focus {
+  border: none !important;
+}
+
+textarea:focus-visible {
+
+  outline: none !important;
+}

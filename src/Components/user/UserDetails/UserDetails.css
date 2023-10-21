@@ -1,0 +1,196 @@
+.user_details_headings {
+    font-size: 21px;
+    margin-bottom: 13px;
+    color: #000000;
+}
+
+.user_details {
+    background: #FFF4EC;
+    border-radius: 30px;
+}
+
+.user_details .form-control {
+    background: #FFECDF;
+    border: 1px solid #F2D6C2;
+    border-radius: 15px;
+    box-shadow: none;
+    padding: 0.6rem 0.75rem;
+    resize: none;
+    color: #000000;
+}
+
+.user_details table thead tr th {
+    background: #FFA64F40;
+}
+
+.user_details table {
+    border-spacing: 0 !important;
+}
+
+.user_details .user-data-table {
+    background-color: #FFECDF;
+    border: 1px solid #F2D6C2;
+    border-radius: 15px;
+}
+
+.user_details .user-aldeo .user-data-table {
+    background-color: transparent;
+}
+
+#modal-user .user_details .user-data-table {
+    background-color: #FFF4EC !important;
+}
+
+.user_details table thead tr th span {
+    color: #000000;
+}
+
+.user-data .form-label,
+.user_details .form-label {
+    color: #000000;
+}
+
+.user_details p span {
+    color: #FFC051;
+}
+
+.user-data .user-data-details {
+    border: 1px solid #F3A269;
+    border-radius: 15px;
+    margin-top: 91px;
+    position: relative;
+    padding-bottom: 50px;
+    background: #FFECDF30;
+}
+
+.user-data .user-data-details .prof {
+    width: 179px;
+    height: 179px;
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: -91px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #BB6B31;
+}
+
+.user-data .user-data-details .count-data {
+    margin: 130px auto 0;
+    max-width: 510px;
+    border: 1px solid #F2D6C2;
+    background: #FFECDF;
+    border-radius: 10px;
+    padding: 20px 5px;
+    max-width: 90%;
+}
+
+.user-data .user-data-details .num {
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.user-data .user-data-details .rele {
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: #898989;
+}
+
+.user-data .user-data-table .profile-gap {
+    gap: 36px;
+}
+
+.user-data-frame2 .user-data-table .profile-gap {
+    gap: 65px;
+}
+
+.user-data .user-data-table .img-div {
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    width: 212.26px;
+    height: 212.26px;
+}
+
+.user-data-frame2 .user-data-table .img-div {
+    width: 297px;
+}
+
+.user-data .user-data-table .img-div img {
+    border-radius: 25px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-data .user-data-table .img-div img.video-icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 0;
+}
+
+.user-data .user-data-table .img-div button {
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    background: #FFFFFF80;
+    border-radius: 15px;
+    border: none;
+    padding: 8px 15px;
+    outline: none;
+    box-shadow: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+}
+
+.overflow-modal {
+    overflow-y: auto;
+    height: calc(100vh - 130px);
+}
+
+.overflow-modal::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width:1500px) {
+    .user-data-frame2 .user-data-table .img-div {
+        width: 257px;
+    }
+
+    .user-data-frame2 .user-data-table .profile-gap {
+        gap: 40px;
+    }
+
+    .user-data .user-data-details .prof {
+        width: 150px;
+        height: 150px;
+    }
+
+    .user-data .user-data-details .count-data {
+        margin: 110px auto 0;
+    }
+}
+
+@media (max-width:1200px) {
+    .user-data .user-data-details .prof {
+        width: 120px;
+        height: 120px;
+        top: -60px;
+    }
+
+    .user-data .user-data-details {
+        margin-top: 60px;
+    }
+}

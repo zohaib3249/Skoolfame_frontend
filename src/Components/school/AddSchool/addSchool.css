@@ -1,0 +1,91 @@
+.school-main {
+    margin-top: 100px;
+}
+
+.title-lable {
+    font-weight: 500;
+    font-size: 22px;
+    color: #E4BBAA;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.school-main .school-input input {
+    background: #FFECDF;
+    border: 1px solid #F2D6C2;
+    border-radius: 15px;
+    box-shadow: none;
+    padding: 0.6rem 0.75rem;
+    resize: none;
+    color: #000000;
+    width: 100%;
+    outline: none;
+}
+
+.school-main .school-input select {
+    background: #FFECDF;
+    border: 1px solid #F2D6C2;
+    border-radius: 15px;
+    box-shadow: none;
+    padding: 0.6rem 0.75rem;
+    resize: none;
+    color: #000000;
+    width: 100%;
+    outline: none;
+}
+
+.custom-file {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-radius: 15px;
+    border: 2px dashed #dfdfdf;
+}
+
+.custom-file__input {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+}
+
+.custom-file__input::-webkit-file-upload-button {
+    display: none;
+}
+
+.custom-file__label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    color: #666666;
+    text-transform: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 15px;
+    line-height: 59px;
+    padding-left: 20px;
+    font-size: 22px;
+}
+
+.custom-file__input:valid~.custom-file__label {
+    background: #fff;
+    display: none;
+}
+
+.custom-file span {
+    font-size: 13px;
+}
+
+.submit-btn {
+    background: linear-gradient(180.35deg, #FFC051 0.29%, #FA803C 52.38%, #F86333 99.69%);
+    box-shadow: none !important;
+    box-shadow: 0px 8px 30px rgba(249, 111, 54, 0.6);
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 22px;
+    color: #FFFFFF;
+    border: none;
+    margin-top: 50px;
+    padding: 15px 50px;
+}

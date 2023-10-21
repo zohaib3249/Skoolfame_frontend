@@ -1,0 +1,37 @@
+.UserLicenseAgreement {
+    margin: 0 auto;
+    padding: 50px 20px;
+    width: 80%;
+}
+
+span {
+    font-size: 20px;
+    color: gray;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.section p {
+    color: #3030F1 !important;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.address p {
+    margin-top: 0;
+}

@@ -1,0 +1,38 @@
+.body-bg {
+    height: 100vh;
+    background: linear-gradient(180.35deg, #ffc0514d, #f8633373);
+}
+
+.heading-bg {
+    background: linear-gradient(180.35deg, #FFC051 0.29%, #F86333 99.69%);
+    padding: 15px 0;
+    color: white;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.support {
+    text-align: center;
+    margin: 8px;
+    margin-top: 2rem;
+    padding: 8px;
+}
+
+.support-container {
+    width: 80vw;
+    margin: auto;
+    margin-top: 12vh;
+}
+
+.contact {
+    margin-top: 4rem;
+}
+
+.email-at {
+    margin: 8px;
+    text-align: center;
+}
+
+.email-link {
+    font-size: 1.2rem;
+}
