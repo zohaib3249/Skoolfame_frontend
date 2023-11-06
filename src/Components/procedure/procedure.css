@@ -1,3 +1,49 @@
+.about-main-heading{
+  margin: 32px;
+  width: calc(100% - 64px);
+  color: var(--gray-900, #101828);
+font-family: Inter;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: 38px; /* 126.667% */
+}
+.about-teaxtarea{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 6px;
+align-self: stretch;
+border-radius: 8px;
+border: 1px solid var(--gray-300, #D0D5DD);
+background: var(--White, #FFF);
+width: calc(100% -64px);
+/* Shadow/xs */
+box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+margin: 0px 32px;
+min-height: 300px !important;
+padding: 12px;
+}
+.about-btn{
+  display: flex;
+  width: -webkit-fill-available;
+height: 50px;
+  margin: 32px;
+padding: 10px 18px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 8px;
+border: 1px solid #F2E03A !important;
+background: #F2E03A !important;
+color: #000 !important;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px;
+box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
 .procedure-main {
   margin-top: 100px;
 }

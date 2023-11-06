@@ -35,7 +35,7 @@ const Header = (props) => {
   return (
     <div className="header" >
       <Button className="toggle" onClick={() => props.setToggle(!props.toggle)}><MdFilterList /></Button>
-      <div className="d-flex align-items-center">
+      {/* <div className="d-flex align-items-center">
         <Dropdown>
           <Dropdown.Toggle id="dropdown-basic">
             <div className="user-toggle d-flex align-items-center gap-3">
@@ -50,7 +50,7 @@ const Header = (props) => {
             <Dropdown.Item style={{ textAlign: "center", borderTop: "1px solid lightgray" }} onClick={logout}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-      </div>
+      </div> */}
       {props.toggle ? <ClickAwayListener onClickAway={handleClickAway}>
         <div className={`${props.toggle ? "m-0" : ""} hide`}>
           <div className="menu">

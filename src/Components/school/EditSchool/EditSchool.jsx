@@ -1,16 +1,16 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Table, Button, Col, Row, Model } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Layout from "../../../Layout";
 import moment from "moment";
-import "./addSchool.css";
-import { useNavigate } from 'react-router-dom'
+import "../AddSchool/addSchool.css";
+import { useParams,useNavigate } from 'react-router-dom'
 import { FaRegImage } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { createSchool,uploadSchoolCSV } from "../../../controller/api";
+import { getSingleSchool,updateSingleSchool } from "../../../controller/api";
 import Dropdown from "react-bootstrap/Dropdown";
-import statesData from "./country.json";
+import statesData from "../AddSchool/country.json";
 import { UploadIcon,UserIcon } from "../../../Icons";
 
 const AddSchool = () => {
@@ -28,7 +28,36 @@ const AddSchool = () => {
   const [selectEduLevel, setSelectEduLevel] = useState("");
 
   const navigate = useNavigate();
-  const fileInputRef = useRef(null);
+  const { id } = useParams();
+  const getSchool = async () => {
+    try {
+      const data = await getSingleSchool(id);
+      console.log('data',data)
+      const obj= {
+        schoolType:data.data.schoolType?data.data.schoolType:"",
+        name: data.data.name?data.data.name:"",
+        since: data.data.since?data.data.since:"",
+        address: data.data.address?data.data.address:"",
+        state:data.data.state?data.data.state: "",
+        about:data.data.about?data.data.about: "",
+      }
+     setSchool(obj)
+     if(data.data.schoolType){
+      setSelectEduLevel(data.data.schoolType)
+     }
+     if(data.data.state){
+      setSelectedStateAbbr(data.data.state);
+     }if(data.data.image.length>0){
+      setFile(data.data.image[0])
+     }
+    } catch (error) {
+      console.log(error);
+      // setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getSchool();
+  }, []);
 
   const levels=[{label:'High School',value:'High School'},{label:'Middle School',value:'Middle School'}]
 
@@ -52,7 +81,7 @@ const AddSchool = () => {
   };
 
   const handleClick = async () => {
-    const createdData = await createSchool(school, file);
+    const createdData = await updateSingleSchool(school, file,id);
     if (createdData) {
       const { message, status } = createdData;
       if (status === 1) {
@@ -63,51 +92,15 @@ const AddSchool = () => {
       }
     }
   };
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
-
-  const handleFileChange = async  (e) => {
-    const selectedFile = e.target.files[0];
-
-    if (selectedFile) {
-      if (selectedFile.type === 'text/csv' && selectedFile.size <= 30000000) {
-        const createdData = await uploadSchoolCSV(selectedFile);
-    if (createdData) {
-      const { message, status } = createdData;
-      if (status === 1) {
-        navigate("/schools");
-        toast.success(message);
-      } else {
-        toast.error(message);
-      }
-    }
-        console.log('Selected file:', selectedFile.name);
-      } else {
-        alert('Please select a CSV file with a maximum size of 30MB.');
-        e.target.value = '';
-      }
-    }
-  };
-
+console.log('school',school)
   return (
     <Layout>
       <div className="home-main" style={{ padding: "32px" }}>
         <div className="school-creation-main-heading d-flex justify-content-between align-items-center w-100">
-          School Creation
-          <div>
-          <button onClick={handleButtonClick} className="custom-btn">Upload CSV</button>
-      <input
-        type="file"
-        accept=".csv"
-        ref={fileInputRef}
-        style={{ display: 'none' }}
-        onChange={handleFileChange}
-      />
-    </div>
+          Edit School
+          {/* <button className="custom-btn">Upload CSV</button> */}
         </div>
-        <p className="create-school-text mt-3">Create School</p>
+        {/* <p className="create-school-text mt-3">Create School</p> */}
         <Row className="form-wrap">
           <Col lg={8} md={8} sm={12}>
           <div className="custom-input">
@@ -144,6 +137,7 @@ const AddSchool = () => {
                   <Form.Control
                     type="text"
                     name="name"
+                    value={school.name}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -154,6 +148,7 @@ const AddSchool = () => {
                   <Form.Control
                     type="text"
                     name="since"
+                    value={school.since}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -165,6 +160,7 @@ const AddSchool = () => {
                 <Form.Control
                   type="text"
                   name="address"
+                  value={school.address}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -202,6 +198,7 @@ const AddSchool = () => {
                 <Form.Control
                   type="text"
                   name="about"
+                  value={school.about}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -238,7 +235,7 @@ const AddSchool = () => {
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-end mt-3">
-              <button variant="primary" className="custom-cancel-btn me-3">
+              <button variant="primary" onClick={()=> navigate("/schools")} className="custom-cancel-btn me-3">
                 Cancel
               </button>
               <button className="custom-btn" onClick={handleClick}>

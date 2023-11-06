@@ -1,16 +1,46 @@
-.school-main {
-    margin-top: 100px;
-}
-
-.title-lable {
+.school-creation-main-heading{
+    color: var(--gray-900, #101828);
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
     font-weight: 500;
-    font-size: 22px;
-    color: #E4BBAA;
-    margin-bottom: 10px;
-    display: block;
+    line-height: 38px;
+  
+}
+.create-school-text{
+    color: var(--gray-900, #101828);
+
+/* Text lg/Medium */
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 28px; /* 155.556% */
+}
+.form-wrap{
+    display: flex;
+padding: 24px;
+flex-direction: column;
+align-items: flex-start;
+gap: 24px;
+align-self: stretch;
+background: var(--White, #FFF);
+}
+.custom-input{
+    margin-bottom: 24px;
+}
+.title-lable {
+    color: var(--gray-700, #344054);
+
+    /* Text sm/Medium */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
 }
 
-.school-main .school-input input {
+.school-main .custom-input input {
     background: #FFECDF;
     border: 1px solid #F2D6C2;
     border-radius: 15px;
@@ -22,7 +52,7 @@
     outline: none;
 }
 
-.school-main .school-input select {
+.school-main .custom-input select {
     background: #FFECDF;
     border: 1px solid #F2D6C2;
     border-radius: 15px;
@@ -37,9 +67,11 @@
 .custom-file {
     position: relative;
     width: 100%;
-    height: 70px;
+    height: 130px;
     border-radius: 15px;
-    border: 2px dashed #dfdfdf;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200, #EAECF0);
+    background: var(--White, #FFF);
 }
 
 .custom-file__input {
@@ -58,14 +90,32 @@
     width: 100%;
     height: 100%;
     background: #ffffff;
-    color: #666666;
     text-transform: none;
     cursor: pointer;
     transition: all 0.3s;
     border-radius: 15px;
     line-height: 59px;
-    padding-left: 20px;
-    font-size: 22px;
+    padding: 20px;
+    color: var(--gray-500, #667085);
+    .upload-text{
+        color: var(--gray-500, #667085);
+text-align: center;
+
+/* Text xs/Regular */
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 150% */
+    }
+
+    /* Text sm/Regular */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    text-align: center;
 }
 
 .custom-file__input:valid~.custom-file__label {

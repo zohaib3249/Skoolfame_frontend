@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import validator from 'validator';
 import { Auth } from '../../App';
@@ -8,8 +8,8 @@ import { login } from '../../controller/api';
 import './login.css'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect } from 'react';
+import {Logo} from '../../Icons';
 import { useRef } from 'react';
-import TextField from '@mui/material/TextField';
 
 const Login = (e) => {
 
@@ -70,17 +70,20 @@ const Login = (e) => {
 
   return (
     <div className='login d-flex align-items-center justify-content-center'>
-      <div className='login-box text-center'>
-        <div className="bg-h1">
-          <h1>Login</h1>
-        </div>
+      <div className='login-box'>
+        <Logo/>
+        <p className="heading">
+          Please enter your password
+        </p>
         <div className='login-form'>
-          <input type="text" placeholder='Email Address' name='email' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, [e.target.name]: e.target.value })} />
-          <input className='mt-4' type="password" placeholder='Password' name='password' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, [e.target.name]: e.target.value })} />
+          <label>Email or username</label>
+          <input type="text" name='email' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, [e.target.name]: e.target.value })} />
+          <label>Password</label>
+          <input type="password" name='password' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, [e.target.name]: e.target.value })} />
 
           <div className='d-flex justify-content-end'>
           </div>
-          <Button to="/dashboard" ref={ref} className='login-btn shadow-none' onClick={handelSubmit} disabled={loading ? true : false}>{loading ? <CircularProgress style={{ color: "white" }} /> : "Login"}</Button>
+          <Button to="/dashboard" ref={ref} className='login-btn' onClick={handelSubmit} disabled={loading ? true : false}>{loading ? <CircularProgress style={{ color: "white" }} /> : "Login"}</Button>
         </div>
       </div>
     </div>

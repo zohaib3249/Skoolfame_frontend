@@ -13,12 +13,16 @@ import UserDetails from "./Components/user/UserDetails/UserDetails";
 import { createContext } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import School_Requests from "./Components/school/School_Requests/School_Requests";
+import RequestTabs from "./Components/school/School_Requests/RequestTabs";
 import SchoolDetails from "./Components/school/SchoolDetail/SchoolDetail";
+import Groups from "./Components/school/Groups/Groups";
 import Schools from "./Components/school/schools/Schools";
+import Moderator from "./Components/moderator/Moderator";
 import Nominees from "./Components/school/Nominees/Nominees";
+import Members from "./Components/school/Members/Members";
 import Notfound from "./Components/notfound/Notfound";
 import AddSchool from "./Components/school/AddSchool/AddSchool";
+import EditSchool from "./Components/school/EditSchool/EditSchool";
 import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./Components/Terms/Terms";
 import UserLicenseAgreement from "./Components/UserLicenseAgreement/UserLicenseAgreement";
@@ -34,7 +38,10 @@ const App = () => {
   const AuthToken = localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : "";
 
   // axios.defaults.baseURL = "http://10.0.0.84:3000/admin"
-  axios.defaults.baseURL = `${window.location.origin}/admin`;
+  // axios.defaults.baseURL = `${window.location.origin}/admin`;
+  // axios.defaults.baseURL = 'http://34.229.172.155/admin';
+  // axios.defaults.baseURL = 'https://56df-39-45-36-66.ngrok-free.app/admin';
+  axios.defaults.baseURL = 'http://192.168.1.8:3000/admin';
   // process.env.REACT_APP_API_URL    #REACT_APP_PUBLIC_URL="http://192.168.40.29:3000"
   axios.defaults.headers.Authorization = AuthToken;
 
@@ -59,13 +66,17 @@ const App = () => {
               <Route exact path="/users" element={<User />} />
               <Route exact path="/profile" element={<Profile />} />
               <Route exact path="/schools" element={<Schools />} />
-              <Route exact path="/request-schools" element={<School_Requests />} />
+              <Route exact path="/moderator" element={<Moderator />} />
+              <Route exact path="/request-schools" element={<RequestTabs />} />
               <Route exact path="/about" element={<About />} />
               <Route exact path="/chat/:id" element={<Chat />} />
               <Route exact path="/nominees/:id" element={<Nominees />} />
+              <Route exact path="/members/:id" element={<Members />} />
               <Route exact path="/userdetails/:id" element={<UserDetails />} />
               <Route exact path="/Superlatives/:id" element={<SchoolDetails />} />
+              <Route exact path="/Groups/:id" element={<Groups />} />
               <Route exact path="/addschool" element={<AddSchool />} />
+              <Route exact path="/editschool/:id" element={<EditSchool />} />
             </Route>
             <Route exact path="/terms" element={<Terms />} />
             <Route exact path="/license-agreement" element={<UserLicenseAgreement />} />

@@ -32,28 +32,16 @@ const Procedure = () => {
 
   return (
     <Layout>
-      <div className="procedure-main py-4 px-5">
-        <Row>
-          <Col lg={12}>
-            <div className="user-data">
-              <div className="user-data-header d-flex align-items-center justify-content-between">
-                <h1>About</h1>
-                <div className="delete-group d-flex align-items-center justify-content-end">
-                  <Button onClick={handle}>Update</Button>
-                </div>
-              </div>
-              <div className="user-data-table mt-4">
-                <TextareaAutosize className="bg-transparent border-0 area " aria-label="empty textarea" placeholder='write anything for your app'
-                  onChange={(e) => setAbout(e.target.value)}
-                  value={about}
-                  style={{ width: "100%", minHeight: 300, border: "none", padding: "20px" }}
-                />
-              </div>
-
-            </div>
-          </Col>
-        </Row>
-      </div>
+      <div className="home-main">
+        <div className="about-main-heading">
+          Users
+        </div>
+          <TextareaAutosize className="about-teaxtarea area " aria-label="empty textarea" placeholder='Enter a description...'
+            onChange={(e) => setAbout(e.target.value)}
+            value={about}
+          />
+          <Button className='about-btn' onClick={handle}>Update</Button>
+        </div>    
     </Layout>
   );
 };

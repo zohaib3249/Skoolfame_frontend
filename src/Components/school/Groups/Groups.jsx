@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../../Layout";
 import { Col, Row, Table, Pagination, Form, Modal, Button, NavLink, } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { getSchool } from "../../../controller/api";
+import { getGroups } from "../../../controller/api";
 import { Toast } from "bootstrap";
 import moment from "moment";
 import localization from "moment/locale/en-in";
@@ -12,7 +12,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { SearchIcon,SortingIcon, DeleteIcon, DeleteDialogIcon } from "../../../Icons";
 
-const SchoolDetail = () => {
+const Groups = () => {
 
   const [show, setShow] = useState(false);
   const [rev, setRev] = useState(false);
@@ -59,16 +59,16 @@ const SchoolDetail = () => {
     } catch (error) { console.log(error); }
   };
 
-
   const SchoolDetails = async (pages) => {
     try {
-      const SchoolData = await getSchool(perPage, pages, searchData, id, rev);
-      const { status, message, data, count, paginationValue, page } =
+      const SchoolData = await getGroups(perPage, pages, searchData, id, rev);
+      const { status, message, data, count, pagination_value,
+        current_page, } =
         SchoolData;
       if (status === 1) {
         setSchools(data);
-        setPaginationVal(paginationValue);
-        setCurrent_page(page);
+        setPaginationVal(pagination_value);
+        setCurrent_page(current_page);
         setLoading(false);
       } else {
         toast.error(message);
@@ -93,7 +93,7 @@ const SchoolDetail = () => {
       <div className="home-main">
             <div className="user-data w-100">
             <div className="school-main-heading d-flex justify-content-between align-items-center">
-          Superlative
+          Groups
         </div>
         <div className="school-data-heading w-100">
           <div className="d-flex flex-row-reverse">
@@ -115,11 +115,14 @@ const SchoolDetail = () => {
                 <Table responsive className="mb-0 px-4 pb-2">
                   <thead>
                     <tr>
-                      <th className="table-heading" width="40%">
-                       Name
+                      <th className="table-heading" width="25%">
+                       Group Name
                       </th>
                       <th className="table-heading" width="15%">
-                       Nominees
+                       Member
+                      </th>
+                      <th className="table-heading" width="15%">
+                       School Name
                       </th>
                       <th className="table-heading" width="45%">
                       Created At
@@ -141,20 +144,25 @@ const SchoolDetail = () => {
                   <tbody>
                     {!loading &&
                       schools.length !== 0 &&
-                      schools?.map((school,i) => {
-                        const { _id, user_profile_image, name, createdAt, users, category_name, } = school;
+                      schools?.map((group,i) => {
+                        const { _id, members, school, createdAt, name, } = group;
                         return (
                           <tr key={_id} className={i % 2 == 0 ? "even-row" : "odd-row"}>
-                            <td className="table-data" width="40%">
+                            <td className="table-data" width="25%">
                               <div className="delete-group ">
-                                    {category_name}
+                                    {name}
                               </div>
                             </td>
                             <td className="table-data" width="15%">
                              
-                                {users?.length}  
+                                {members?.length}  
                         
                             </td>
+                            <td className="table-data" width="15%">
+                             
+                             {school.name}  
+                     
+                         </td>
                             <td className="table-data" width="15%">
                              
                                 {moment(createdAt).format("L")}
@@ -162,8 +170,8 @@ const SchoolDetail = () => {
                             </td>
                             <td className="table-data" width="20%">
                               <div className="nominees-btn">
-                                <Link to={`/nominees/${_id}`} style={{textDecoration:'none',color:"#000"}}>
-                                    View Nominees
+                                <Link to={`/members/${_id}`} style={{textDecoration:'none',color:"#000"}}>
+                                    View Members
                                 </Link>
                               </div>
                             </td>
@@ -196,7 +204,7 @@ const SchoolDetail = () => {
                   <LoadingSpinner />
                 </h1>
               ) : schools?.length === 0 ? (
-                <h1 className="lod">no data available of superlative</h1>
+                <h1 className="lod">no data available of Groups</h1>
               ) : null}
               <div className="d-flex justify-content-end mt-4">
                 <Pagination_new
@@ -241,4 +249,4 @@ const SchoolDetail = () => {
   );
 };
 
-export default SchoolDetail;
+export default Groups;

@@ -6,15 +6,15 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import localization from "moment/locale/en-in";
 import Pagination_new from "../../Pagination_new";
-import { schoolNominees } from "../../../controller/api";
+import { schoolMembers } from "../../../controller/api";
 import LoadingSpinner from "../../LoadingSpinner/LoaderSpinner";
 import { SearchIcon, SortingIcon } from "../../../Icons";
 
-const Nominees = () => {
+const Members = () => {
   const [searchData, setSearchData] = useState("");
   const [schools, setSchools] = useState([]);
   const [schoolss, setSchoolss] = useState([]);
-  const [nominees, setNominees] = useState([]);
+  const [members, setMembers] = useState([]);
   const [Current_page, setCurrent_page] = useState(1);
   const [loading, setLoading] = useState(true);
   const [Pagination, setPagination] = useState(1);
@@ -28,7 +28,7 @@ const Nominees = () => {
 
   const AllNomi = (pages) => {
     if (pages === 1) {
-      setNominees(
+      setMembers(
         searchData
           ? schoolss
               .filter((user) =>
@@ -40,7 +40,7 @@ const Nominees = () => {
           : schools.slice(pages - 1, per_page)
       );
     } else {
-      setNominees(
+      setMembers(
         searchData
           ? schoolss
               .filter((user) =>
@@ -56,8 +56,8 @@ const Nominees = () => {
   };
 
   const rever = () => {
-    if (nominees.length > 1) {
-      setNominees([...nominees].reverse());
+    if (members.length > 1) {
+      setMembers([...members].reverse());
     }
   };
 
@@ -68,7 +68,7 @@ const Nominees = () => {
       setCurrent_page(1);
       // setFors(true)
       if (searchData.length) {
-        setNominees(
+        setMembers(
           schoolss
             .filter((user) =>
               `${user.users?.first_name + " " + user?.users?.last_name}`
@@ -79,7 +79,7 @@ const Nominees = () => {
         );
 
         setPagination(
-          nominees
+          members
             ? Math.ceil(
                 schoolss.filter((user) =>
                   `${user.users?.first_name + " " + user?.users?.last_name}`
@@ -90,7 +90,7 @@ const Nominees = () => {
             : 1
         );
       } else {
-        setNominees(schools?.slice(Current_page - 1, per_page));
+        setMembers(schools?.slice(Current_page - 1, per_page));
         setPagination(schools ? Math.ceil(schools?.length / per_page) : 1);
       }
     };
@@ -102,13 +102,13 @@ const Nominees = () => {
   useEffect(() => {
     const getSingleUser = async () => {
       try {
-        const nome = await schoolNominees(id);
+        const nome = await schoolMembers(id);
         const { status, message, data } = nome;
         if (status === 1) {
           setSchools(data);
           setSchoolss(data);
           setPagination(data ? Math.ceil(data?.length / per_page) : 1);
-          setNominees(data?.slice(Current_page - 1, per_page));
+          setMembers(data?.slice(Current_page - 1, per_page));
           setLoading(false);
         }
       } catch (error) {
@@ -117,7 +117,7 @@ const Nominees = () => {
       }
     };
     getSingleUser();
-    document.title = "Skoolfame | Nominees";
+    document.title = "Skoolfame | members";
   }, []);
 
   return (
@@ -125,7 +125,7 @@ const Nominees = () => {
       <div className="home-main">
         <div className="user-data w-100">
           <div className="school-main-heading d-flex justify-content-between align-items-center">
-            Nominees
+            Members
           </div>
           <div className="school-data-heading w-100">
             <div className="d-flex flex-row-reverse">
@@ -147,14 +147,11 @@ const Nominees = () => {
             <Table responsive className="mb-0 px-4 pb-2">
               <thead>
                 <tr>
-                  <th className="table-heading" width="35%">
+                  <th className="table-heading" width="55%">
                     Name
                   </th>
                   <th className="table-heading" width="25%">
                     Email Address
-                  </th>
-                  <th className="table-heading" width="20%">
-                    Superlatives
                   </th>
                   <th className="table-heading" width="20%">
                     Created At
@@ -169,19 +166,19 @@ const Nominees = () => {
               </thead>
               <tbody>
                 {!loading &&
-                  nominees.length !== 0 &&
-                  nominees?.map((user, i) => {
+                  members.length !== 0 &&
+                  members?.map((user, i) => {
                     return (
                       <tr
                         key={i}
                         className={i % 2 == 0 ? "even-row" : "odd-row"}
                       >
-                        <td className="table-data" width="40%">
+                        <td className="table-data" width="55%">
                           <div className="delete-group d-flex align-items-center gap-2 text-decoration-none">
                             <Avatar
                               src={
-                                user.users?.user_profile_image
-                                  ? `${pf}/${user.users?.user_profile_image}`
+                                user.user_profile_image
+                                  ? `${pf}/${user.user_profile_image}`
                                   : "../images/user.png"
                               }
                               alt="user profile"
@@ -190,20 +187,17 @@ const Nominees = () => {
                             <div>
                               <p className="user-name">
                                 {`${
-                                  user.users?.first_name +
+                                  user.first_name +
                                   " " +
-                                  user?.users?.last_name
+                                  user?.last_name
                                 }`}
                               </p>
-                              <p className="user-email">{user.users?.email}</p>
+                              <p className="user-email">{user.email}</p>
                             </div>
                           </div>
                         </td>
                         <td className="table-data" width="25%">
-                          {user.users?.email}
-                        </td>
-                        <td className="table-data" width="20%">
-                          {user.superlatives?.category_name}
+                          {user.email}
                         </td>
 
                         <td className="table-data" width="20%">
@@ -219,8 +213,8 @@ const Nominees = () => {
             <h1 className="lod">
               <LoadingSpinner />
             </h1>
-          ) : nominees.length === 0 ? (
-            <h1 className="lod">No data available of nominee</h1>
+          ) : members.length === 0 ? (
+            <h1 className="lod">No data available of members</h1>
           ) : null}
           <div className="d-flex justify-content-end mt-4">
             <Pagination_new
@@ -235,4 +229,4 @@ const Nominees = () => {
   );
 };
 
-export default Nominees;
+export default Members;

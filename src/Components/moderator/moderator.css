@@ -22,36 +22,6 @@
   line-height: 38px; /* 126.667% */
   
   }
-  .nominees-btn{
-    display: flex;
-padding: 10px 16px;
-justify-content: center;
-align-items: center;
-gap: 8px;
-border-radius: 8px;
-border: 1px solid #F2E03A;
-
-/* Shadow/xs */
-box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-color: #000;
-
-/* Text sm/Semibold */
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: 20px; /* 142.857% */
-  }
-  .request-p{
-    color: var(--gray-500, #667085);
-cursor: pointer;
-/* Text sm/Semibold */
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 20px; /* 142.857% */
-  }
   .school-data-heading{
     padding: 8px 24px;
     width: 100%;
@@ -82,13 +52,4 @@ line-height: 20px; /* 142.857% */
   
   /* Shadow/xs */
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-  }
-  .tabs-text{
-    color: var(--gray-900, #101828);
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 28px; /* 237.5% */
-cursor: pointer;
   }
