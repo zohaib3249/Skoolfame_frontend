@@ -41,7 +41,7 @@ const Sidebar = (props) => {
           <span> <FiUsers /></span>
           Users
         </NavLink>
-        <NavLink to="/schools" className={props.urls === "Superlatives" || props.urls === "nominees" ? "active" : ""}>
+        <NavLink to="/schools" className={props.urls === "Superlatives" || props.urls === "Groups" || props.urls === "nominees" ? "active" : ""}>
           <span> <BiBookOpen /></span>
           Schools
         </NavLink>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { updateAbout } from "../../controller/api";
 import Layout from "../../Layout";

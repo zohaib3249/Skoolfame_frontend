@@ -11,6 +11,7 @@ import { getAllSchool } from "../../../controller/api";
 import localization from "moment/locale/en-in";
 import LoadingSpinner from "../../LoadingSpinner/LoaderSpinner";
 import axios from "axios";
+import {MdOutlineGroups} from 'react-icons/md';
 import { addSuperlatives,addGroups } from "../../../controller/api";
 import {
   SearchIcon,
@@ -452,16 +453,19 @@ function handleGroupSubmission(){
                       </td>
                       <td className="table-data" width="15%">
                         <div className="delete-group d-flex align-items-center justify-content-end gap-3">
-                          {/* <Link
-                                  to={`/Superlatives/${_id}`}
-                                  className="d-flex align-items-center gap-3 p-0 text-decoration-none">
-                                  <Button>Info</Button>
-                                </Link> */}
+                        <span style={{ cursor: "pointer" }}>
+                          <Link
+                                    to={`/Groups/${_id}`}
+                                    className="p-0 text-decoration-none"
+                                    style={{ color: "#000" }}>
+                                  <MdOutlineGroups style={{color:'#667085',height:"28px",width:'28px'}}/>
+                                </Link>
+                                </span>
                           <span style={{ cursor: "pointer" }} onClick={()=>{handleSuperShow();setSchoolIconId(_id)  }}>
                             <AwardIcon />
                           </span>
                           <span style={{ cursor: "pointer" }}>
-                          <Link
+                          <Link 
                             to={`/Superlatives/${_id}`}
                             className="p-0 text-decoration-none"
                             style={{ color: "#000" }}

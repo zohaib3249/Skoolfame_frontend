@@ -2,14 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import "./chat.css";
 import Layout from "../../Layout";
 import { Col, Row } from "react-bootstrap";
-import { IoArrowBackOutline, IoReturnUpBack } from "react-icons/io5";
-import { getAllUser, getChatById, getChatuser } from "../../controller/api";
+import { getChatById, getChatuser } from "../../controller/api";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import Avatar from "@mui/material/Avatar";
 import localization from "moment/locale/en-in";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import VideocamIcon from "@mui/icons-material/Videocam";
 
 const Chat = () => {
   const [users, setUsers] = useState([]);

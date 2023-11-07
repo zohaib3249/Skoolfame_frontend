@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Form, Table, Button, Col, Row, Model } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form,Col, Row,} from "react-bootstrap";
 import Layout from "../../../Layout";
-import moment from "moment";
 import "../AddSchool/addSchool.css";
 import { useParams,useNavigate } from 'react-router-dom'
-import { FaRegImage } from "react-icons/fa";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { getSingleSchool,updateSingleSchool } from "../../../controller/api";
-import Dropdown from "react-bootstrap/Dropdown";
 import statesData from "../AddSchool/country.json";
 import { UploadIcon,UserIcon } from "../../../Icons";
 

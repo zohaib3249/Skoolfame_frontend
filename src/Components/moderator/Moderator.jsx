@@ -3,7 +3,6 @@ import { Table, Form } from "react-bootstrap";
 import { Button, Dialog, DialogContent } from "@mui/material";
 import Layout from "../../Layout";
 import "./moderator.css";
-import { Link } from "react-router-dom";
 import moment from "moment";
 import { toast } from "react-toastify";
 import Pagination_new from "../Pagination_new";

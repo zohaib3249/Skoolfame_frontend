@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Col, Row, Table, Pagination } from "react-bootstrap";
+import { Col, Row, Table } from "react-bootstrap";
 import { getAllLiveUser } from "../../controller/api";
 import Layout from "../../Layout";
 import LoadingSpinner from "../LoadingSpinner/LoaderSpinner";
@@ -14,7 +14,6 @@ import Avatar from "@mui/material/Avatar";
 
 const Dashboard = () => {
   const [searchData, setSearchData] = useState("");
-  const [liveUser, setLiveUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const [allUser, setAllUser] = useState([]);
   const [allUserS, setAllUserS] = useState([]);

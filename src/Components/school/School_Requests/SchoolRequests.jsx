@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Modal, Row, Table } from "react-bootstrap";
-import Layout from "../../../Layout";
-import { GrFormClose } from "react-icons/gr";
+import {Table } from "react-bootstrap";
 import "../schools/document.css";
 import moment from "moment";
 import { toast } from "react-toastify";

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../../Layout";
-import { Col, Row, Table, Pagination, Form, Modal, Button, NavLink, } from "react-bootstrap";
+import { Table,Form, Modal, Button, } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import { Dialog, DialogContent } from "@mui/material";
 import { getSchool } from "../../../controller/api";
-import { Toast } from "bootstrap";
 import moment from "moment";
 import localization from "moment/locale/en-in";
 import LoadingSpinner from "../../LoadingSpinner/LoaderSpinner";
@@ -18,10 +18,12 @@ const SchoolDetail = () => {
   const [rev, setRev] = useState(false);
   const [searchData, setSearchData] = useState("");
   const [schools, setSchools] = useState([]);
+  const [schoolId, setSchoolId] = useState(""); 
   const [paginationVal, setPaginationVal] = useState(1);
   const [current_page, setCurrent_page] = useState(1);
   const [loading, setLoading] = useState(true);
   const [newName, setNewName] = useState("");
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
 
   const { id } = useParams();
   const perPage = 5;
@@ -39,6 +41,21 @@ const SchoolDetail = () => {
   const rever = () => {
     // setSchools([...schools].reverse());
     setRev(!rev)
+  };
+  const deletSchool = async () => {
+    if (schoolId !== "") {
+      try {
+        const res = await axios.delete(`/school-timeline/school-superlatives/delete-superlative?id=${schoolId}`);
+        if (res.data.status === 1) {
+          toast.success(res.data.message);
+          SchoolDetails(current_page);
+        } else {
+          toast.error(res.data.message);
+        }
+      } catch (error) {
+        console.log(error, "school-page-error");
+      }
+    }
   };
 
   const addName = async () => {
@@ -169,17 +186,12 @@ const SchoolDetail = () => {
                             </td>
                             <td className="table-data" width="10%">
                         <div className="delete-group d-flex align-items-center justify-content-end gap-3">
-                          {/* <Link
-                                  to={`/Superlatives/${_id}`}
-                                  className="d-flex align-items-center gap-3 p-0 text-decoration-none">
-                                  <Button>Info</Button>
-                                </Link> */}
                           <span
                             style={{ cursor: "pointer" }}
-                            // onClick={() => {
-                            //   setOpenDeleteDialog(true);
-                            //   setSchoolId(_id);
-                            // }}
+                            onClick={() => {
+                              setOpenDeleteDialog(true);
+                              setSchoolId(_id);
+                            }}
                           >
                             <DeleteIcon />
                           </span>
@@ -237,6 +249,39 @@ const SchoolDetail = () => {
           </Form>
         </Modal.Body>
       </Modal>
+      <Dialog open={openDeleteDialog} aria-labelledby="responsive-dialog-title">
+        <DialogContent className="custom-delete-dialog">
+          <div className="text-center">
+            <DeleteDialogIcon />
+          </div>
+          <p className="heading mt-3">Delete School</p>
+          <p className="data my-3">
+            Are you sure you want to delete this Superlative? This action cannot be
+            undone.
+          </p>
+          <div className="d-flex justify-content-center align-items-center">
+            <Button
+              className="dialog-btn"
+              style={{ color: "black" }}
+              onClick={() => {
+                setOpenDeleteDialog(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="dialog-btn"
+              style={{ color: "white", background: "red", marginLeft: "20px" }}
+              onClick={() => {
+                setOpenDeleteDialog(false);
+                deletSchool();
+              }}
+            >
+              Delete
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
