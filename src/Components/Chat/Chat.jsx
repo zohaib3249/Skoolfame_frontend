@@ -202,14 +202,15 @@ const Chat = () => {
               style={{ paddingLeft: "0px", paddingRight: "0px" }}
             >
               <div className="chat-window">
+              {name && (
                 <div className="chat-header">
-                <div class='icon-container'>
-                  <Avatar
-                    alt=""
-                    src={userImg ? `${pf}/${userImg}` : "../images/user.png"}
-                    sx={{ width: 32, height: 32 }}
-                  />
-                   <div class='status-circle' />
+                  <div class="icon-container">
+                    <Avatar
+                      alt=""
+                      src={userImg ? `${pf}/${userImg}` : "../images/user.png"}
+                      sx={{ width: 32, height: 32 }}
+                    />
+                    <div class="status-circle" />
                   </div>
                   <div>
                     <p className="user-name">{name}</p>
@@ -219,6 +220,7 @@ const Chat = () => {
                                         <IoArrowBackOutline />
                                     </button> */}
                 </div>
+              )}
 
                 <div
                   className="chat-window-scroll"
@@ -286,19 +288,19 @@ const Chat = () => {
                             {dates.has(date) ? null : renderDate(date)}
                             <div className="chat-right">
                               <div className="chat-inner d-flex">
-                              <div class='icon-container'>
-                              <Avatar
-                                  src={
-                                    sender_user?.user_profile_image
-                                      ? `${pf}/${sender_user?.user_profile_image}`
-                                      : "../images/user.png"
-                                  }
-                                  sx={{ width: 32, height: 32 }}
-                                  alt=""
-                                />
-                   <div class='status-circle' />
-                  </div>
-                              
+                                <div class="icon-container">
+                                  <Avatar
+                                    src={
+                                      sender_user?.user_profile_image
+                                        ? `${pf}/${sender_user?.user_profile_image}`
+                                        : "../images/user.png"
+                                    }
+                                    sx={{ width: 32, height: 32 }}
+                                    alt=""
+                                  />
+                                  <div class="status-circle" />
+                                </div>
+
                                 <div className="ms-2">
                                   <div className="chat-user-heading-div">
                                     <div className="chat-user-heading-div">
