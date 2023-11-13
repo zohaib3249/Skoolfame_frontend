@@ -1,6 +1,10 @@
 .login {
   height: 100vh;
-  background: linear-gradient(180.35deg, #ffc0514d, #f8633373);
+  background-image: url('../../assets/img/Desktop.jpg'); /* Specify the path to your image */
+  background-size: cover; /* Adjusts the image size to cover the entire div */
+  background-position: center; /* Center the image within the div */
+  background-repeat: no-repeat; 
+  /* background: linear-gradient(180.35deg, #ffc0514d, #f8633373); */
 }
 
 .login-box {
