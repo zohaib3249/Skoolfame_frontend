@@ -9,21 +9,20 @@ import { getAllReports } from "../../controller/api";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../LoadingSpinner/LoaderSpinner";
 import Pagination_new from "../Pagination_new";
-import { SearchIcon } from "../../Icons";
+// import { SearchIcon } from "../../Icons";
 
 const perPage = 10;
 const pf = process.env.REACT_APP_PUBLIC_URL;
 const GetReport = () => {
   const [loading, setLoading] = useState(true);
-  const [searchData, setSearchData] = useState("");
+  // const [searchData, setSearchData] = useState("");
   const [allReports, setAllReports] = useState([]);
   const [paginationVal, setPaginationVal] = useState(1);
   const [current_page, setCurrent_page] = useState(1);
 
   const AllReports = async (pages) => {
     try {
-      const SchoolData = await getAllReports(perPage, pages,searchData);
-      console.log("SchoolData", SchoolData);
+      const SchoolData = await getAllReports(perPage, pages);//searchData
       const {
         status,
         message,
@@ -65,7 +64,7 @@ const GetReport = () => {
   useEffect(() => {
     AllReports();
     document.title = "Skoolfame | Reports";
-  }, [searchData]);
+  }, []);//searchData
 
 
   return (
@@ -74,7 +73,7 @@ const GetReport = () => {
         <div className="user-main-heading">Reported Users</div>
         <div className="user-data-heading d-flex align-items-center justify-content-between">
           <h1 className="heading-data">Live Users</h1>
-          <div class="form-group has-search">
+          {/* <div class="form-group has-search">
             <span class="form-control-feedback">
               <SearchIcon />
             </span>
@@ -85,7 +84,7 @@ const GetReport = () => {
               onChange={(e) => setSearchData(e.target.value)}
               placeholder="Search"
             />
-          </div>
+          </div> */}
         </div>
         <div className="custom-data-table">
           <Table responsive className="mb-0 px-4 pb-2">

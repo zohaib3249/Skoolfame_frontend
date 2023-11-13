@@ -90,9 +90,9 @@ export const updateSingleSchool = async (fileData, file,id) => {
   }
 }
 //All reports
-export const getAllReports = async (perPage, page = 1,searchData) => {
+export const getAllReports = async (perPage, page = 1) => {//searchData
   try {
-    const AllReport = await axios.get(`/get-report-post?perPage=${perPage}&page=${page}&search=${searchData}`);
+    const AllReport = await axios.get(`/get-report-post?perPage=${perPage}&page=${page}`);//&search=${searchData}
     const { data } = AllReport;
     return data;
   } catch (error) {
