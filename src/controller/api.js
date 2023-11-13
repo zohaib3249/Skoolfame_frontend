@@ -90,9 +90,9 @@ export const updateSingleSchool = async (fileData, file,id) => {
   }
 }
 //All reports
-export const getAllReports = async (perPage, page = 1) => {
+export const getAllReports = async (perPage, page = 1,searchData) => {
   try {
-    const AllReport = await axios.get(`/get-report-post?perPage=${perPage}&page=${page}`);
+    const AllReport = await axios.get(`/get-report-post?perPage=${perPage}&page=${page}&search=${searchData}`);
     const { data } = AllReport;
     return data;
   } catch (error) {
@@ -298,9 +298,9 @@ export const schoolNominees = async (id) => {
     return errorResponse(error);
   }
 };
-export const schoolMembers = async (id) => {
+export const schoolMembers = async (perPage, page = 1, searchData,id) => {
   try {
-    const user = await axios.get(`/school-timeline/groups/${id}/members`);
+    const user = await axios.get(`/school-timeline/groups/${id}/members?perPage=${perPage}&page=${page}&search=${searchData}`);
     const { data } = user;
     return data;
   } catch (error) {

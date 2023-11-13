@@ -22,7 +22,7 @@ const GetReport = () => {
 
   const AllReports = async (pages) => {
     try {
-      const SchoolData = await getAllReports(perPage, pages);
+      const SchoolData = await getAllReports(perPage, pages,searchData);
       console.log("SchoolData", SchoolData);
       const {
         status,
@@ -65,7 +65,8 @@ const GetReport = () => {
   useEffect(() => {
     AllReports();
     document.title = "Skoolfame | Reports";
-  }, []);
+  }, [searchData]);
+
 
   return (
     <Layout>

@@ -100,9 +100,9 @@ const Members = () => {
   // frist time loading page
 
   useEffect(() => {
-    const getSingleUser = async () => {
+    const getSingleUser = async (pages) => {
       try {
-        const nome = await schoolMembers(id);
+        const nome = await schoolMembers(per_page, pages,searchData,id);
         const { status, message, data } = nome;
         if (status === 1) {
           setSchools(data);
@@ -118,7 +118,7 @@ const Members = () => {
     };
     getSingleUser();
     document.title = "Skoolfame | members";
-  }, []);
+  }, [searchData]);
 
   return (
     <Layout>
