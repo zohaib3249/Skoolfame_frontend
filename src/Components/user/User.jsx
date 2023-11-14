@@ -229,21 +229,21 @@ const User = (props) => {
           <Table responsive className="mb-0 px-4 pb-2">
             <thead>
               <tr>
-                <th className="table-heading" width="25%">
+                <th className="table-heading" width="21%">
                   Name
                 </th>
-                {/* <th className="table-heading" width="17%">
+                <th className="table-heading" width="17%">
                   Gender
-                </th> */}
-                    <th className="table-heading" width="30%">
+                </th>
+                    <th className="table-heading" width="25%">
                   Email Address
                 </th>
-                <th className="table-heading" width="20%">
+                <th className="table-heading" width="16%">
                   Birthdate
                 </th>
                 <th
                   className=" d-flex align-items-center table-heading"
-                  width="25%"
+                  width="21%"
                 >
                   Created At
                   <span
@@ -275,7 +275,7 @@ const User = (props) => {
                       key={_id}
                       className={i % 2 == 0 ? "even-row" : "odd-row"}
                     >
-                      <td className="table-data" width="25%">
+                      <td className="table-data" width="21%">
                         <div className="delete-group ">
                           <div
                             // to={`/userdetails/${_id}`}
@@ -301,20 +301,20 @@ const User = (props) => {
                           </div>
                         </div>
                       </td>
-                      {/* <td className="table-data" width="17%">
+                      <td className="table-data" width="17%">
                         {gender}
-                      </td> */}
+                      </td>
                      
-                      <td className="table-data" width="30%">
+                      <td className="table-data" width="25%">
                         {email}
                       </td>
-                      <td className="table-data" width="20%">
+                      <td className="table-data" width="16%">
                         {moment(dob).format("L")}
                       </td>
-                      <td className="table-data" width="15%">
+                      <td className="table-data" width="12%">
                         <div>{moment(createdAt).format("L")}</div>
                       </td>
-                      <td className="table-data" width="10%">
+                      <td className="table-data" width="9%">
                         <div className="delete-group d-flex align-items-center justify-content-center gap-3 py-2">
                           <Link to={`/chat/${_id}`} className="cursor-pointer">
                             <ChatIcon />

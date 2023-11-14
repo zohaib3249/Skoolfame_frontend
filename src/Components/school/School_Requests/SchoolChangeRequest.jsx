@@ -14,6 +14,8 @@ const SchoolChangeRequests = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const pf = process.env.REACT_APP_PUBLIC_URL;
+
   const [requestSchools, setRequestSchools] = useState([]);
   const [allSchools, setAllSchools] = useState([]);
   const [length, setLength] = useState(allSchools ? allSchools.length : []);
@@ -104,13 +106,13 @@ const SchoolChangeRequests = () => {
             <Table responsive className="mb-0 px-4 pb-2">
               <thead>
                 <tr>
-                  {/* <th className="table-heading" width="40%">
-                    Requester Name
-                  </th> */}
                   <th className="table-heading" width="40%">
+                    Requester Name
+                  </th>
+                  <th className="table-heading" width="25%">
                     Previous School Name
                   </th>
-                  <th className="table-heading" width="60%">
+                  <th className="table-heading" width="35%">
                     Requested School Name
                   </th>
                 </tr>
@@ -121,28 +123,52 @@ const SchoolChangeRequests = () => {
                   allSchools?.map((school, i) => {
                     const {
                       _id,
-                      school_profile_image,
-                      name,
+                      user_profile_image,
+                      first_name,
+                      last_name,
                       oldSchool,
                       newSchool,
-                      createdAt,
-                      users,
+                      email,
+                      users, 
                     } = school;
                     return (
                       <tr
                         key={_id}
                         className={i % 2 == 0 ? "even-row" : "odd-row"}
                       >
-                        {/* <td className="table-data" width="30%">
-                          {name}
-                        </td> */}
-                        <td className="table-data" width="40%">
+                       <td className="table-data" width="40%">
+                        <div className="delete-group ">
+                          <div
+                            // to={`/userdetails/${_id}`}
+                            className="d-flex align-items-center gap-2 text-decoration-none"
+                          >
+                            <Avatar
+                              alt="user profile"
+                              src={
+                                user_profile_image
+                                  ? `${pf}/${user_profile_image}`
+                                  : "./images/user.png"
+                              }
+                              sx={{ width: 32, height: 32 }}
+                            />
+                            <div>
+                              <p className="user-name">
+                                {first_name!== undefined? first_name:''}
+                                {" "}
+                                {last_name!==undefined?last_name:''}
+                              </p>
+                              <p className="user-email">{email}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                        <td className="table-data" width="25%">
                           {oldSchool.name}
                         </td>
-                        <td className="table-data" width="45%">
+                        <td className="table-data" width="25%">
                           {newSchool.name}
                         </td>
-                        <td className="table-data" width="15%">
+                        <td className="table-data" width="10%">
                           <span className="delete-group d-flex align-items-center justify-content-start gap-3">
                             <div
                               className="request-p"
