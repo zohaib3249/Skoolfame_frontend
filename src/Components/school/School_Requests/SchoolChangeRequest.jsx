@@ -8,6 +8,7 @@ import { getSchoolsChangeRequest } from "../../../controller/api";
 import localization from "moment/locale/en-in";
 import LoadingSpinner from "../../LoadingSpinner/LoaderSpinner";
 import axios from "axios";
+import Avatar from "@mui/material/Avatar";
 
 const SchoolChangeRequests = () => {
   const [show, setShow] = useState(false);

@@ -90,14 +90,14 @@ const GetReport = () => {
           <Table responsive className="mb-0 px-4 pb-2">
             <thead>
               <tr>
-                <th className="table-heading" width="37%">
+                <th className="table-heading" width="33%">
                   Posted User
                 </th>
-                <th className="table-heading" width="37%">
+                <th className="table-heading" width="33%">
                     Reported User
                 </th>
-                <th className="table-heading" width="26%">
-                  Reported User Email
+                <th className="table-heading" width="34%">
+                  Reported Post
                 </th>
               </tr>
             </thead>
@@ -109,6 +109,7 @@ const GetReport = () => {
                     const senderUser = report.senderUser[userIndex];
                     const {
                       _id,
+                      postData,
                       first_name: reportedFirstName,
                       last_name: reportedLastName,
                       email: reportedEmail,
@@ -117,7 +118,7 @@ const GetReport = () => {
 
                     return (
                       <tr key={`${_id}-${userIndex}`} className={index % 2 == 0 ? "even-row" : "odd-row"}>
-                        <td className="table-data" width="37%">
+                        <td className="table-data" width="33%">
                         <div className="d-flex align-items-center">
                           <Avatar
                               alt="user profile"
@@ -140,7 +141,7 @@ const GetReport = () => {
                             </div>
                             </div>
                         </td>
-                        <td className="table-data" width="37%">
+                        <td className="table-data" width="33%">
                         <div className="d-flex align-items-center">
                           <Avatar
                               alt="user profile"
@@ -163,8 +164,13 @@ const GetReport = () => {
                             </div>
                             </div>
                         </td>
-                        <td className="table-data" width="26%">
-                            {senderUser?.email}
+                        <td className="table-data" width="34%">
+                        {postData?.message_type=== 'text'?postData?.message:postData?.message.length>0?
+                        <a href={`${pf}/${postData?.message}`} target="_blank" rel="noopener noreferrer">
+                        Open {postData?.message_type}
+                      </a>:''
+                          }
+                        
                         </td>
                       </tr>
                     );
