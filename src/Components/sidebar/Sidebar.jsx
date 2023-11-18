@@ -4,6 +4,7 @@ import { BiBookOpen } from "react-icons/bi";
 import { Link,NavLink } from "react-router-dom";
 import { FiUsers,FiFlag,FiInfo } from "react-icons/fi";
 import {LuBarChart2} from 'react-icons/lu';
+
 import { ImBlocked } from "react-icons/im";
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
@@ -58,6 +59,12 @@ const Sidebar = (props) => {
           <FiFlag />
           </span>
           Report Post
+        </NavLink>
+        <NavLink to="/user-reports">
+          <span className="spanpath">
+          <FiUsers />
+          </span>
+          Report User
         </NavLink>
         <NavLink to="/moderator">
           <span className="spanpath">

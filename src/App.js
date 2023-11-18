@@ -28,6 +28,7 @@ import Terms from "./Components/Terms/Terms";
 import UserLicenseAgreement from "./Components/UserLicenseAgreement/UserLicenseAgreement";
 import Support from "./Components/Support/Support";
 import Report from "./Components/Report/report";
+import UserReport from "./Components/UserReport/report";
 
 export const Auth = createContext();
 
@@ -39,7 +40,7 @@ const App = () => {
 
   // axios.defaults.baseURL = "http://10.0.0.84:3000/admin"
   // axios.defaults.baseURL = `${window.location.origin}/admin`;
-  axios.defaults.baseURL = 'http://34.229.172.155/admin';
+  axios.defaults.baseURL = 'http://127.0.0.1:3000/admin';
   // axios.defaults.baseURL = 'https://56df-39-45-36-66.ngrok-free.app/admin';
   // axios.defaults.baseURL = 'http://192.168.1.8:3000/admin';
   // process.env.REACT_APP_API_URL    #REACT_APP_PUBLIC_URL="http://192.168.40.29:3000"
@@ -83,6 +84,7 @@ const App = () => {
             <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route exact path="/support" element={<Support />} />
             <Route exact path="/reports" element={<Report />} />
+            <Route exact path="/user-reports" element={<UserReport />} />
             <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login />} />
             <Route path="*" element={<Notfound />} />
           </Routes>

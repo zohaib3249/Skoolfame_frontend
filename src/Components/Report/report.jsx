@@ -72,19 +72,7 @@ const GetReport = () => {
       <div className="home-main">
         <div className="user-main-heading">Reported Users</div>
         <div className="user-data-heading d-flex align-items-center justify-content-between">
-          <h1 className="heading-data">Live Users</h1>
-          {/* <div class="form-group has-search">
-            <span class="form-control-feedback">
-              <SearchIcon />
-            </span>
-            <input
-              className="form-control"
-              type="text"
-              value={searchData}
-              onChange={(e) => setSearchData(e.target.value)}
-              placeholder="Search"
-            />
-          </div> */}
+
         </div>
         <div className="custom-data-table">
           <Table responsive className="mb-0 px-4 pb-2">
@@ -94,7 +82,7 @@ const GetReport = () => {
                   Posted User
                 </th>
                 <th className="table-heading" width="33%">
-                    Reported User
+                  Reported User
                 </th>
                 <th className="table-heading" width="34%">
                   Reported Post
@@ -105,23 +93,28 @@ const GetReport = () => {
               {!loading &&
                 allReports.length !== 0 &&
                 allReports?.map((report, index) => {
+                  let postDatas = report.postData;
+                  console.log(postDatas)
                   return report.reportedUsers.map((reportedUser, userIndex) => {
+
                     const senderUser = report.senderUser[userIndex];
+
                     const {
                       _id,
                       postData,
                       first_name: reportedFirstName,
                       last_name: reportedLastName,
                       email: reportedEmail,
-                      user_profile_image:reportedProfileImage,
+                      user_profile_image: reportedProfileImage,
                     } = reportedUser;
 
                     return (
                       <tr key={`${_id}-${userIndex}`} className={index % 2 == 0 ? "even-row" : "odd-row"}>
                         <td className="table-data" width="33%">
-                        <div className="d-flex align-items-center">
-                          <Avatar
-                              alt="user profile"
+                          <div className="d-flex align-items-center">
+                            <Avatar
+                              alt={`${senderUser?.first_name + " " + senderUser?.last_name
+                                }`}
                               src={
                                 senderUser?.user_profile_image
                                   ? `${pf}/${senderUser?.user_profile_image}`
@@ -131,20 +124,20 @@ const GetReport = () => {
                             />
                             <div className="ms-2">
                               <p className="user-name">
-                              {`${
-                              senderUser?.first_name + " " + senderUser?.last_name
-                            }`}
+                                {`${senderUser?.first_name + " " + senderUser?.last_name
+                                  }`}
                               </p>
                               <p className="user-email">
-                                { senderUser?.email}
-                                </p>
+                                {senderUser?.email}
+                              </p>
                             </div>
-                            </div>
+                          </div>
                         </td>
                         <td className="table-data" width="33%">
-                        <div className="d-flex align-items-center">
-                          <Avatar
-                              alt="user profile"
+                          <div className="d-flex align-items-center">
+                            <Avatar
+                              alt={`${reportedFirstName + " " + reportedLastName
+                                }`}
                               src={
                                 reportedProfileImage
                                   ? `${pf}/${reportedProfileImage}`
@@ -154,24 +147,29 @@ const GetReport = () => {
                             />
                             <div className="ms-2">
                               <p className="user-name">
-                              {`${
-                              reportedFirstName + " " + reportedLastName
-                            }`}
+                                {`${reportedFirstName + " " + reportedLastName
+                                  }`}
                               </p>
                               <p className="user-email">
                                 {reportedEmail}
-                                </p>
+                              </p>
                             </div>
-                            </div>
+                          </div>
                         </td>
                         <td className="table-data" width="34%">
-                        {postData?.message_type=== 'text'?postData?.message:postData?.message.length>0?
-                        <a href={`${pf}/${postData?.message}`} target="_blank" rel="noopener noreferrer">
-                        Open {postData?.message_type}
-                      </a>:''
-                          }
-                        
+                          {postDatas?.message_type === 'text' ? (
+                            postDatas?.message
+                          ) : postDatas?.message_type === 'image' && postDatas?.images_list.length > 0 ? (
+                            <a href={`${pf}/${postDatas.images_list[0]}`} target="_blank" rel="noopener noreferrer">
+                              Open {postDatas?.message_type}
+                            </a>
+                          ) : (
+                            <a href={`${pf}/${postDatas?.message}`} target="_blank" rel="noopener noreferrer">
+                              Open {postDatas?.message_type}
+                            </a>
+                          )}
                         </td>
+
                       </tr>
                     );
                   });

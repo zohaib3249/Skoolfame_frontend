@@ -99,7 +99,15 @@ export const getAllReports = async (perPage, page = 1) => {//searchData
     return errorResponse(error);
   }
 }
-
+export const getAllUserReports = async (perPage, page = 1) => {//searchData
+  try {
+    const AllReport = await axios.get(`/report/all?perPage=${perPage}&page=${page}`);//&search=${searchData}
+    const { data } = AllReport;
+    return data;
+  } catch (error) {
+    return errorResponse(error);
+  }
+}
 // Add All Superlatives
 
 export const addSuperlatives = async (payload,schoolIconId) => {
