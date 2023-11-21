@@ -59,7 +59,7 @@ box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   outline: none;
   padding: 20px;
   padding-right: 50px;
-  background-image: url(../../../public/images/search_icon.png);
+  background-image: url(/public/images/search_icon.png);
   background-position: calc(100% - 22px) 18px, calc(100% - 20px) 14px, 100% 0;
   background-size: 20px;
   background-repeat: no-repeat;
