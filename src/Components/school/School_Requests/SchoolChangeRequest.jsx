@@ -122,15 +122,12 @@ const SchoolChangeRequests = () => {
                 {!loading &&
                   allSchools?.length !== 0 &&
                   allSchools?.map((school, i) => {
+              
                     const {
                       _id,
-                      user_profile_image,
-                      first_name,
-                      last_name,
+                     user,
                       oldSchool,
                       newSchool,
-                      email,
-                      users, 
                     } = school;
                     return (
                       <tr
@@ -144,21 +141,22 @@ const SchoolChangeRequests = () => {
                             className="d-flex align-items-center gap-2 text-decoration-none"
                           >
                             <Avatar
-                              alt="user profile"
+                              alt={user.first_name}
                               src={
-                                user_profile_image
-                                  ? `${pf}/${user_profile_image}`
+                                user.user_profile_image
+                                  ? `${pf}/${user.user_profile_image}`
                                   : "./images/user.png"
                               }
                               sx={{ width: 32, height: 32 }}
                             />
+                            
                             <div>
                               <p className="user-name">
-                                {first_name!== undefined? first_name:''}
+                                {user.first_name!== undefined? user.first_name:''}
                                 {" "}
-                                {last_name!==undefined?last_name:''}
+                                {user.last_name!==undefined?user.last_name:''}
                               </p>
-                              <p className="user-email">{email}</p>
+                              <p className="user-email">{user.email}</p>
                             </div>
                           </div>
                         </div>
